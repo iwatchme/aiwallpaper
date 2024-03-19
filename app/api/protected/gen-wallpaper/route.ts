@@ -12,6 +12,8 @@ import { saveUser } from "@/services/user";
 
 export async function POST(req: Request) {
   const client = getOpenAIClient();
+  
+  console.log(`getClient: ${client}`)
 
   const user = await currentUser();
   if (!user || !user.emailAddresses || user.emailAddresses.length === 0) {
