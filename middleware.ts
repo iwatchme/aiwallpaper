@@ -12,8 +12,8 @@ export default authMiddleware({
           { status: 401 }
         );
       } else {
-        console.log(`redirect to sign-in ${new URL("/sign-in", req.url)}`);
-        return NextResponse.redirect(new URL("/sign-in", req.url));
+        console.log(`rewrite to sign-in ${new URL("/sign-in", req.url)}`);
+        return NextResponse.rewrite(new URL("/sign-in", req.url));
       }
     }
 
