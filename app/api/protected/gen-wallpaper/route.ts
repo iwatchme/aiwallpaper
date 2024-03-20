@@ -49,7 +49,7 @@ export async function POST(req: Request) {
       prompt: `generate desktop wallpaper image about ${description}`,
       model: llm_name,
       n: 1,
-      quality: "hd",
+      quality: "standard",
       response_format: "url",
       size: img_size,
       style: "vivid",
@@ -59,6 +59,7 @@ export async function POST(req: Request) {
     const res = await client.images.generate(llm_params);
 
     const raw_img_url = res.data[0].url;
+    console.log(`raw_img_url: ${raw_img_url}`)
     if (!raw_img_url) {
       return respErr("generate wallpaper failed");
     }
